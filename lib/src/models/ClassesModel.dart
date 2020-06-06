@@ -1,4 +1,4 @@
-class Job {
+class ClassModel {
   String name;
   String description;
   Map perks;
@@ -7,7 +7,7 @@ class Job {
   int health;
   int mana;
 
-  Job({
+  ClassModel({
     String name,
     String description,
     Map perks,

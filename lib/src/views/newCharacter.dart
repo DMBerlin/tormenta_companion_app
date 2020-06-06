@@ -25,7 +25,7 @@ class NewCharacterSheet extends StatefulWidget {
 }
 
 class _NewCharacterSheetState extends State<NewCharacterSheet> {
-  CharacterModel _character;
+  CharacterModel characterState;
 
   goBack(BuildContext context) {
     Navigator.pop(context);
@@ -33,29 +33,47 @@ class _NewCharacterSheetState extends State<NewCharacterSheet> {
 
   @override
   void initState() {
-    _character = widget.character;
+    characterState = widget.character;
     super.initState();
   }
 
-  void newCharacterCallback(Race characterRace) {
-    print(characterRace);
+  void newCharacterCallback(RacesModel characterRace) {
     setState(() {
-      _character.setRace(
+      characterState.setRace(
         race: characterRace,
       );
+      // characterState.setRaceAttributes(attributes: characterRace.attributes);
     });
   }
 
-  // void newCharacterAttUpdate(Map<String, int> attributes) {
-  //   print(attributes);
-  //   setState(() {
-  //     character.updateAttribute(update: attributes);
-  //   });
-  // }
+  void updateCharacterState({
+    Map<String, int> addAttribute,
+    Map<String, int> subAttribute,
+  }) {
+    // * @AddAtribute Command
+    if (addAttribute != null) {
+      String att = addAttribute.keys.toList()[0];
+      int val = addAttribute.values.toList()[0];
 
-  // CharacterModel getCharacter() {
-  //   return this.character;
-  // }
+      setState(() {
+        characterState.updateAttribute(
+          attribute: att,
+          value: val,
+        );
+      });
+    }
+    if (subAttribute != null) {
+      String att = subAttribute.keys.toList()[0];
+      int val = subAttribute.values.toList()[0];
+
+      setState(() {
+        characterState.updateAttribute(
+          attribute: att,
+          value: val,
+        );
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -75,7 +93,7 @@ class _NewCharacterSheetState extends State<NewCharacterSheet> {
                         width: 70,
                         height: 70,
                         color: Colors.blueGrey[300],
-                        child: _character.getProfilePicture(),
+                        child: characterState.getProfilePicture(),
                       ),
                       onTap: () {
                         showModalBottomSheet(
@@ -189,39 +207,39 @@ class _NewCharacterSheetState extends State<NewCharacterSheet> {
                       children: <Widget>[
                         AttributeComputedTile(
                           attribute: 'Força',
-                          value: _character.attributes['Força'],
-                          character: _character,
-                          // controller: newCharacterAttUpdate,
+                          value: characterState.attributes['Força'],
+                          character: characterState,
+                          callback: updateCharacterState,
                         ),
                         AttributeComputedTile(
                           attribute: 'Constituição',
-                          value: _character.attributes['Constituição'],
-                          character: _character,
-                          // controller: newCharacterAttUpdate,
+                          value: characterState.attributes['Constituição'],
+                          character: characterState,
+                          callback: updateCharacterState,
                         ),
                         AttributeComputedTile(
                           attribute: 'Destreza',
-                          value: _character.attributes['Destreza'],
-                          character: _character,
-                          // controller: newCharacterAttUpdate,
+                          value: characterState.attributes['Destreza'],
+                          character: characterState,
+                          callback: updateCharacterState,
                         ),
                         AttributeComputedTile(
                           attribute: 'Inteligência',
-                          value: _character.attributes['Inteligência'],
-                          character: _character,
-                          // controller: newCharacterAttUpdate,
+                          value: characterState.attributes['Inteligência'],
+                          character: characterState,
+                          callback: updateCharacterState,
                         ),
                         AttributeComputedTile(
                           attribute: 'Sabedoria',
-                          value: _character.attributes['Sabedoria'],
-                          character: _character,
-                          // controller: newCharacterAttUpdate,
+                          value: characterState.attributes['Sabedoria'],
+                          character: characterState,
+                          callback: updateCharacterState,
                         ),
                         AttributeComputedTile(
                           attribute: 'Carisma',
-                          value: _character.attributes['Carisma'],
-                          character: _character,
-                          // controller: newCharacterAttUpdate,
+                          value: characterState.attributes['Carisma'],
+                          character: characterState,
+                          callback: updateCharacterState,
                         ),
                       ],
                     ),

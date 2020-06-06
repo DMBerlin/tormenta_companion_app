@@ -2,82 +2,101 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:tormenta_companion_app/src/models/CharacterModel.dart';
+import 'package:tormenta_companion_app/src/models/AbilityPointsTable.dart';
 
-class AbilityPointsTable {
-  Map<String, int> table = {
-    '8': -2,
-    '9': -1,
-    '10': 0,
-    '11': 1,
-    '12': 2,
-    '13': 3,
-    '14': 4,
-    '15': 6,
-    '16': 8,
-    '17': 11,
-    '18': 14
-  };
+AbilityPointsTable abilityTable = new AbilityPointsTable();
 
-  int getPrice({String place}) {
-    return table[place];
-  }
-
-  bool canBuy({current, bag}) {
-    int wallet = bag + this.table[current.toString()];
-    int target = current + 1;
-    int price = this.table[target.toString()];
-    return price <= wallet;
-  }
-
-  int sell({current, bag}) {
-    return this.table[current.toString()] -
-        this.table[(current - 1).toString()];
-  }
-}
-
-class AttributeComputedTile extends StatefulWidget {
+class AttributeComputedTile extends StatelessWidget {
   final String attribute;
   final int value;
   final CharacterModel character;
-  // final int attributePoints;
+  final int attributePoints;
+  final Function callback;
+
   AttributeComputedTile({
     this.attribute,
     this.value,
     this.character,
-    // this.attributePoints,
+    this.attributePoints,
+    this.callback,
   });
-  @override
-  _AttributeComputedTileState createState() => _AttributeComputedTileState();
-}
 
-class _AttributeComputedTileState extends State<AttributeComputedTile> {
-  String _attribute;
-  int _value;
-  // int _attributePoints;
-  CharacterModel _character;
-  AbilityPointsTable abilityTable = new AbilityPointsTable();
-
-  @override
-  void initState() {
-    _attribute = widget.attribute;
-    _value = widget.value;
-    _character = widget.character;
-    // _attributePoints = widget.attributePoints;
-    super.initState();
+  bool isAttributeGreaterThanZero(val) {
+    return int.parse(computeBonuses(val)) >= 0;
   }
 
-  bool isAttributeGreaterThanZero() {
-    return int.parse(computeBonuses()) >= 0;
-  }
-
-  String computeBonuses() {
+  String computeBonuses(val) {
     double base = 10;
-    double bonus = (_value - base) / 2;
+    double bonus = (val - base) / 2;
     return bonus.floor().toString();
+  }
+
+  Widget addController(value) {
+    return GestureDetector(
+      onTap: () {
+        bool pass =
+            abilityTable.canBuy(current: value, bag: character.attributePoints);
+        if (pass) {
+          character.ballanceWallet(
+            currentPrice: abilityTable.getPrice(
+              place: value.toString(),
+            ),
+            nextPrice: abilityTable.getPrice(
+              place: (value + 1).toString(),
+            ),
+          );
+          Map<String, int> update = {attribute: value + 1};
+          callback(addAttribute: update);
+        } else {}
+      },
+      child: Container(
+        width: 30,
+        height: 30,
+        decoration: BoxDecoration(
+          color: Colors.grey[300],
+          borderRadius: BorderRadius.all(
+            Radius.circular(8),
+          ),
+        ),
+        child: Center(child: Text('+')),
+      ),
+    );
+  }
+
+  Widget subController(value) {
+    return GestureDetector(
+      onTap: () {
+        int sold = abilityTable.sell(current: value);
+        character.sellItem(value: sold);
+        Map<String, int> update = {attribute: value - 1};
+        callback(subAttribute: update);
+      },
+      child: Container(
+        width: 30,
+        height: 30,
+        decoration: BoxDecoration(
+          color: Colors.grey[300],
+          borderRadius: BorderRadius.all(
+            Radius.circular(8),
+          ),
+        ),
+        child: Center(child: Text('-')),
+      ),
+    );
   }
 
   @override
   Widget build(BuildContext context) {
+    int virtualValue = value;
+
+    if (character.race != null) {
+      character.race.attributes.forEach((att) {
+        if (att[this.attribute] != null) {
+          virtualValue = value + att[this.attribute];
+        }
+      });
+    }
+
     return Container(
       width: 100,
       height: 175,
@@ -92,7 +111,7 @@ class _AttributeComputedTileState extends State<AttributeComputedTile> {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Text(
-              _attribute,
+              attribute,
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontWeight: FontWeight.bold,
@@ -108,7 +127,7 @@ class _AttributeComputedTileState extends State<AttributeComputedTile> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Text(
-                  isAttributeGreaterThanZero() ? '+' : '',
+                  isAttributeGreaterThanZero(virtualValue) ? '+' : '',
                   style: TextStyle(
                     fontWeight: FontWeight.w500,
                     color: Colors.blueGrey,
@@ -116,10 +135,10 @@ class _AttributeComputedTileState extends State<AttributeComputedTile> {
                   ),
                 ),
                 Text(
-                  computeBonuses(),
+                  computeBonuses(virtualValue),
                   style: TextStyle(
                     fontWeight: FontWeight.w500,
-                    color: isAttributeGreaterThanZero()
+                    color: isAttributeGreaterThanZero(virtualValue)
                         ? Colors.grey
                         : Colors.red[900],
                     fontSize: 38,
@@ -133,68 +152,20 @@ class _AttributeComputedTileState extends State<AttributeComputedTile> {
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
-                GestureDetector(
-                  onTap: () {
-                    int sold = abilityTable.sell(current: _value);
-                    setState(() {
-                      _character.sellItem(value: sold);
-                      _value--;
-                    });
-                  },
-                  child: Container(
-                    width: 30,
-                    height: 30,
-                    decoration: BoxDecoration(
-                      color: Colors.grey[300],
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(8),
-                      ),
-                    ),
-                    child: Center(child: Text('-')),
-                  ),
-                ),
+                subController(value),
                 Container(
                   padding: EdgeInsets.symmetric(horizontal: 10, vertical: 3),
                   decoration: BoxDecoration(
                     border: Border.all(width: 0.5, color: Colors.grey),
                   ),
                   child: Text(
-                    _value.toString(),
+                    virtualValue.toString(),
                     style: TextStyle(
                       fontSize: 18,
                     ),
                   ),
                 ),
-                GestureDetector(
-                  onTap: () {
-                    bool pass = abilityTable.canBuy(
-                        current: _value, bag: _character.attributePoints);
-                    if (pass) {
-                      setState(() {
-                        _character.ballanceWallet(
-                          currentPrice: abilityTable.getPrice(
-                            place: _value.toString(),
-                          ),
-                          nextPrice: abilityTable.getPrice(
-                            place: (_value + 1).toString(),
-                          ),
-                        );
-                        _value++;
-                      });
-                    } else {}
-                  },
-                  child: Container(
-                    width: 30,
-                    height: 30,
-                    decoration: BoxDecoration(
-                      color: Colors.grey[300],
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(8),
-                      ),
-                    ),
-                    child: Center(child: Text('+')),
-                  ),
-                ),
+                addController(value),
               ],
             ),
           ),

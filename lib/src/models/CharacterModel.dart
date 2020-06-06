@@ -10,8 +10,8 @@ class CharacterModel {
   String origin;
   String name;
   int level;
-  Race race;
-  Job job;
+  RacesModel race;
+  ClassModel job;
   Map hitpoints;
   Map manapoints;
   Map skills;
@@ -25,8 +25,8 @@ class CharacterModel {
       String origin,
       String name,
       int level,
-      Race race,
-      Job job,
+      RacesModel race,
+      ClassModel job,
       Map hitpoints,
       Map manapoints,
       Map skills,
@@ -82,28 +82,18 @@ class CharacterModel {
     this.attributePoints = 20;
   }
 
-  setRace({Race race}) {
-    this.resetBuilt();
+  setRace({RacesModel race}) {
     this.race = race;
-    setAttributes(
-      attributes: this.race.attributes,
-    );
+    // addRaceAttributes(
+    //   attributes: this.race.attributes,
+    // );
   }
 
-  setJob({Job job}) {
+  setJob({ClassModel job}) {
     this.job = job;
   }
 
-  setAttributes({List<Map> attributes}) {
-    this.attributes = {
-      'Força': 10,
-      'Destreza': 10,
-      'Constituição': 10,
-      'Inteligência': 10,
-      'Sabedoria': 10,
-      'Carisma': 10,
-    };
-
+  setRaceAttributes({List<Map> attributes}) {
     attributes.forEach(
       (att) => this.attributes[att.keys
           .toString()
@@ -114,16 +104,9 @@ class CharacterModel {
     );
   }
 
-  updateAttribute({Map update}) {
-    print(update);
-
-    List keys = update.keys.toList();
-    List values = update.values.toList();
-
-    print(keys);
-    print(values);
-
-    this.attributes[keys[0]] = values[0];
+  updateAttribute({String attribute, int value}) {
+    this.attributes[attribute] = value;
+    print(this.attributes);
   }
 
   ballanceWallet({int currentPrice, int nextPrice}) {

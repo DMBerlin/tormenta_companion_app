@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tormenta_companion_app/src/models/RacesModel.dart';
 
-Race hynne = new Race(
+RacesModel hynne = new RacesModel(
   name: 'Hynne',
   subRaces: null,
   unlockableAttributes: false,
@@ -25,7 +25,7 @@ Race hynne = new Race(
       'Também conhecidos como halflings ou “pequeninos”, os hynne são apreciadores de boa comida e casas aconchegantes, raras vezes escolhendo sair pelo mundo em aventuras perigosas. Quando decidem fazê-lo, contudo, recorrem à agilidade e encanto naturais para ludibriar os inimigos — mais de um taverneiro ou miliciano deixou-se enganar por suas mãos ligeiras e sorrisos inocentes. Foram recentemente forçados a fugir de seu antigo reino natal, sendo então acolhidos pelas Repúblicas Livres de Sambúrdia, onde cultivam ervas e especiarias valiosas. Para espanto de todos, também se tornaram astutos mercadores, muitos ascendendo a príncipes mercantes.',
 );
 
-Race anao = new Race(
+RacesModel anao = new RacesModel(
   name: 'Anão',
   subRaces: null,
   unlockableAttributes: false,
@@ -51,7 +51,7 @@ Race anao = new Race(
       'Anões são o mais resiliente dos povos. Em suas cidadelas subterrâneas, trabalham duro escavando minas e forjando metal em belas armas, armaduras e joias. São honestos e determinados, honrando a família e a tradição. Apesar de sua profunda paixão por forja e cerveja, pouca coisa é mais preciosa para um anão que cultivar uma barba longa e orgulhosa.',
 );
 
-Race humano = new Race(
+RacesModel humano = new RacesModel(
   name: 'Humano',
   subRaces: null,
   unlockableAttributes: true,
@@ -70,7 +70,7 @@ Race humano = new Race(
       'O povo mais numeroso em Arton, humanos são considerados os escolhidos dos deuses, aqueles que governam o mundo. Em sua variedade e adaptabilidade, são encontrados em quase todos os pontos do continente — dos vales férteis do Reinado às vastidões áridas do Deserto da Perdição. São exploradores e desbravadores ambiciosos, sempre buscando algo além.',
 );
 
-Race dahllan = new Race(
+RacesModel dahllan = new RacesModel(
   name: 'Dahllan',
   subRaces: null,
   unlockableAttributes: false,
@@ -94,7 +94,7 @@ Race dahllan = new Race(
       'Parte humanas, parte fadas, as dahllan são uma raça de mulheres com a seiva de árvores correndo nas veias. Falam com os animais, controlam as plantas — mas também são ferozes em batalha, retorcendo madeira para formar armaduras.',
 );
 
-Race goblin = new Race(
+RacesModel goblin = new RacesModel(
   name: 'Goblin',
   subRaces: null,
   unlockableAttributes: false,
@@ -120,7 +120,7 @@ Race goblin = new Race(
       'Estes pequenos seres feiosos conseguiram um lugar entre os povos do Reinado. Podem ser encontrados em todas as grandes cidades, muitos vivendo na imundície, outros prosperando em carreiras que quase ninguém tentaria: espiões, aeronautas, engenhoqueiros. Onde o anão teimoso e o elfo empolado falham, o goblin pode dar um jeito. Porque ele não tem vergonha. Nem orgulho. Nem bom senso.',
 );
 
-Race elf = new Race(
+RacesModel elf = new RacesModel(
   name: 'Elfo',
   subRaces: null,
   unlockableAttributes: false,
@@ -142,7 +142,7 @@ Race elf = new Race(
       'Elfos são seres feitos para a beleza e para a guerra, tão habilidosos com magia quanto com espadas e arcos. Elegantes, astutos, de vidas quase eternas, parecem superiores aos humanos em tudo. Poderiam ter governado toda Arton, não fosse a arrogância herdada de sua deusa. Com a queda de Glórienn, os elfos se tornaram um povo sem uma deusa. Um povo independente. Enquanto alguns veem a falta de uma divindade como uma tragédia, outros acreditam que, pela primeira vez na história, são livres.',
 );
 
-Race lefou = new Race(
+RacesModel lefou = new RacesModel(
   name: 'Lefou',
   subRaces: null,
   unlockableAttributes: true,
@@ -165,7 +165,7 @@ Race lefou = new Race(
       'Com a influência macabra da Tormenta permeando cada vez mais o mundo, surgiram os lefou. Estes meio-demônios de aparência grotesca passaram a nascer em famílias de outras raças, sendo logo sacrificados ou expulsos. Entre os que escapam, por sua facilidade em manifestar poderes aberrantes, muitos escolhem abraçar o mal, enquanto outros decidem combatê-lo.',
 );
 
-Race minotauro = new Race(
+RacesModel minotauro = new RacesModel(
   name: 'Minotauro',
   subRaces: null,
   unlockableAttributes: false,
@@ -191,7 +191,7 @@ Race minotauro = new Race(
       'Povo guerreiro, orgulhoso e poderoso, criadores de uma civilização avançada, com a missão sagrada de proteger e governar os fracos — ou assim se enxergavam. Em seus tempos áureos, tomaram grande parte de Arton. Hoje, após a morte de sua divindade e a decadência de seu Império, os minotauros lutam para recuperar a glória perdida ou encontrar um novo papel no mundo.',
 );
 
-Race quareen = new Race(
+RacesModel quareen = new RacesModel(
   name: 'Quareen',
   subRaces: null,
   unlockableAttributes: false,
@@ -215,7 +215,7 @@ Race quareen = new Race(
       'Descendentes de poderosos gênios, os qareen são otimistas, generosos e prestativos, sempre ansiosos por ajudar. Consideram-se abençoados pela Deusa da Magia, exibindo como evidência a marca de Wynna em seus corpos. Sua magia é mais poderosa quando usada para realizar desejos de outros.',
 );
 
-Race golem = new Race(
+RacesModel golem = new RacesModel(
   name: 'Golem',
   subRaces: null,
   unlockableAttributes: false,
@@ -243,7 +243,7 @@ Race golem = new Race(
       'Diz-se que estes seres são apenas construtos sem vida, criados não pelos deuses, mas por mortais. No entanto, são movidos por forças vivas — espíritos elementais selvagens, capturados e lacrados por meios mágicos em corpos de pedra e metal. Muitos conformam-se em seus papéis como trabalhadores e soldados, enquanto outros demonstram alta inteligência, personalidade e inciativa. Podem fazer tudo que outras raças fazem, até mesmo conjurar magias arcanas ou divinas. Será que têm alma? Será que encontrarão os deuses quando chegar sua hora?',
 );
 
-Race kliren = new Race(
+RacesModel kliren = new RacesModel(
   name: 'Kliren',
   subRaces: null,
   unlockableAttributes: false,
@@ -269,7 +269,7 @@ Race kliren = new Race(
       'Estes visitantes de outro mundo seriam uma combinação entre humanos e gnomos — mas, afinal, o que é um gnomo? São uma raça que talvez existisse em Arton, não fosse o envolvimento criminoso de seu deus Tilliann na criação da própria Tormenta. Seja como for, os kliren somam a alta inteligência gnômica e a curiosidade humana, resultando em seres de extrema engenhosidade, criatividade e talento com aparatos mecânicos. Seriam capazes de grandes feitos, talvez até dominar Arton, não fossem a impulsividade e imprudência que por vezes abreviam suas vidas.',
 );
 
-Race medusa = new Race(
+RacesModel medusa = new RacesModel(
   name: 'Medusa',
   subRaces: null,
   unlockableAttributes: false,
@@ -290,7 +290,7 @@ Race medusa = new Race(
       'Ainda que estas criaturas reclusas sejam famosas por transformar suas vítimas em pedra com um simples olhar, apenas as mais antigas e poderosas o fazem. Jovens medusas por vezes rejeitam a solidão e crueldade racial, aventurando-se no Reinado, até mesmo fazendo amigos ou integrando equipes de heróis. Conseguem se fazer passar por mulheres humanas, quando escondem o cabelo feito de serpentes. O único povo que não teme medusas são os anões, que as consideram belas musas.',
 );
 
-Race osteon = new Race(
+RacesModel osteon = new RacesModel(
   name: 'Osteon',
   subRaces: null,
   unlockableAttributes: true,
@@ -315,7 +315,7 @@ Race osteon = new Race(
       'Esqueletos sempre foram temidos como monstros profanos, movidos por puro rancor pelos vivos. Isso mudou; conhecidos coletivamente como osteon, estes esqueletos demonstram a mesma inteligência e consciência das raças vivas, sendo capazes de adotar quaisquer de suas profissões e devoções. Alguns atribuem seu surgimento à queda de Ragnar, antigo Deus da Morte; outros dizem ser consequência da ascensão de Ferren Asloth como um poderoso lich, transformando a nação de Aslothia em um reino necromante.',
 );
 
-Race sereia = new Race(
+RacesModel sereia = new RacesModel(
   name: 'Sereia',
   subRaces: null,
   unlockableAttributes: true,
@@ -338,7 +338,7 @@ Race sereia = new Race(
       'Sendo chamadas sereias quando femininas e tritões quando masculinos, os membros desta raça de torso humanoide e corpo de peixe têm a habilidade de adotar uma forma bípede para caminhar em terras emersas — algo que têm feito com cada vez mais frequência. Enquanto seu povo faz guerra contra os humanos e outros seres marinhos, alguns indivíduos enxergam Arton como um mundo misterioso, exótico, cheio de oportunidades e aventuras.',
 );
 
-Race silfide = new Race(
+RacesModel silfide = new RacesModel(
   name: 'Sílfide',
   subRaces: null,
   unlockableAttributes: false,
@@ -362,7 +362,7 @@ Race silfide = new Race(
       'As mais numerosas fadas em Arton são estas criaturinhas (alguns diriam “pestes”) esvoaçantes, com suas delicadas asas de inseto e grandes olhos escuros. Curiosas e brincalhonas, parecem sempre à procura de alguma diversão, levando todos a subestimá-las quando o assunto exige seriedade. É verdade que seu entusiasmo e inocência podem causar problemas. Também é verdade que gostam de usar magias e ilusões para pregar peças. Pensando bem, ninguém até hoje encontrou um bom motivo para aceitar uma sílfide em um grupo de aventureiros.',
 );
 
-Race suragel = new Race(
+RacesModel suragel = new RacesModel(
   name: 'Suragel',
   subRaces: [
     {
@@ -401,7 +401,7 @@ Race suragel = new Race(
       'Descendentes de extraplanares divinos, esta raça é formada por seres com traços angelicais ou demoníacos — ou ambos. Por serem ligados às forças opostas da luz e trevas, suraggel têm traços diferentes quando orientados para seu lado celestial, sendo então conhecidos como aggelus; ou para o lado abissal, assim sendo chamados sulfure. Sua natureza em geral combina com a descendência, lembrando habitantes dos Reinos dos Deuses, mas eles também podem ser surpreendentes e contraditórios; não se espante muito ao conhecer um aggelus ladino ou um sulfure paladino.',
 );
 
-Race trog = new Race(
+RacesModel trog = new RacesModel(
   name: 'Trog',
   subRaces: null,
   unlockableAttributes: false,
@@ -427,7 +427,7 @@ Race trog = new Race(
       'Trogloditas (ou “trogs”) são homens-lagarto primitivos e subterrâneos que odeiam todos os outros seres — especialmente os que sabem forjar aço, aquilo que mais cobiçam. Suas tribos tramam incursões contra povoados humanos, fazem emboscadas em estradas, atacam exploradores em masmorras. Uns poucos, no entanto, divergem da crueldade e selvageria inerentes à raça. Abandonam a tribo ou são expulsos. Escolhem caminhos surpreendentes, inesperados; tornam-se druidas, ou clérigos, ou bucaneiros, ou sabe-se lá o que mais. Enfim, acabam aceitos como colegas por aventureiros tão estranhos e deslocados quanto eles próprios.',
 );
 
-List<Race> racesOfTormenta = [
+List<RacesModel> racesOfTormenta = [
   anao,
   dahllan,
   elf,

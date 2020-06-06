@@ -1,6 +1,6 @@
 import 'package:tormenta_companion_app/src/models/ClassesModel.dart';
 
-Job cacador = new Job(
+ClassModel cacador = new ClassModel(
   name: 'Caçador',
   description:
       'O caçador é mais que um mateiro ou rastreador. É um especialista em sobrevivência nos terrenos mais selvagens e inóspitos, capaz de obter alimento e achar abrigo em qualquer lugar. É alguém que estuda, persegue e mata sua presa com paciência e astúcia. Mesmo que não pareça um sábio tradicional, o caçador é uma verdadeira enciclopédia de conhecimentos sobre os ermos. Sabe diferenciar veneno de comida, sabe evitar o território de animais mortíferos ou emboscá-los, sabe manter um grupo inteiro vivo longe da civilização.',

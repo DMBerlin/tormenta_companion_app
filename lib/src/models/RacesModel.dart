@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class Race {
+class RacesModel {
   String name;
   List<Map<String, int>> attributes;
   Map powers;
@@ -10,7 +10,7 @@ class Race {
   List<Map<String, int>> attributePenality;
   List subRaces;
 
-  Race({
+  RacesModel({
     String name,
     List<Map<String, int>> attributes,
     Map powers,

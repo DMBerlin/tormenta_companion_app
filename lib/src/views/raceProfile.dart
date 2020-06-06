@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:tormenta_companion_app/src/models/RacesModel.dart';
 
 class RaceProfile extends StatefulWidget {
-  final Race race;
+  final RacesModel race;
   final Function callback;
   RaceProfile({this.race, this.callback});
 
@@ -13,7 +13,7 @@ class RaceProfile extends StatefulWidget {
 }
 
 class _RaceProfileState extends State<RaceProfile> {
-  Race _race;
+  RacesModel _race;
   Function _callback;
 
   @override
