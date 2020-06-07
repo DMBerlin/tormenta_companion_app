@@ -93,6 +93,10 @@ class CharacterModel {
     this.job = job;
   }
 
+  getAttributePoints() {
+    return this.attributePoints;
+  }
+
   setRaceAttributes({List<Map> attributes}) {
     attributes.forEach(
       (att) => this.attributes[att.keys

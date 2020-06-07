@@ -4,8 +4,6 @@ class ClassModel {
   Map perks;
   Map abilities;
   Map trail;
-  int health;
-  int mana;
 
   ClassModel({
     String name,
@@ -13,5 +11,11 @@ class ClassModel {
     Map perks,
     Map abilities,
     Map trail,
-  });
+  }) {
+    this.name = name;
+    this.description = description;
+    this.perks = perks;
+    this.abilities = abilities;
+    this.trail = trail;
+  }
 }

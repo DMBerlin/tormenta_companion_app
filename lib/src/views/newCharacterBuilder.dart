@@ -1,13 +1,17 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:tormenta_companion_app/src/views/classProfile.dart';
+
+import 'package:tormenta_companion_app/src/widgets/newCharacter/attribureComputedTile.dart';
+import 'package:tormenta_companion_app/src/views/raceProfile.dart';
+
+import 'package:tormenta_companion_app/src/services/racesBuilder.dart';
+import 'package:tormenta_companion_app/src/services/classesBuilder.dart';
 
 import 'package:tormenta_companion_app/src/models/RacesModel.dart';
-import 'package:tormenta_companion_app/src/views/raceProfile.dart';
-import 'package:tormenta_companion_app/src/services/racesBuilder.dart';
 import 'package:tormenta_companion_app/src/models/CharacterModel.dart';
-import 'package:tormenta_companion_app/src/widgets/newCharacter/attribureComputedTile.dart';
 
-class NewCharacterSheet extends StatefulWidget {
+class NewCharacterBuilder extends StatefulWidget {
   final CharacterModel character = new CharacterModel(
     attributes: {
       'Força': 10,
@@ -21,10 +25,10 @@ class NewCharacterSheet extends StatefulWidget {
   );
 
   @override
-  _NewCharacterSheetState createState() => _NewCharacterSheetState();
+  _NewCharacterBuilderState createState() => _NewCharacterBuilderState();
 }
 
-class _NewCharacterSheetState extends State<NewCharacterSheet> {
+class _NewCharacterBuilderState extends State<NewCharacterBuilder> {
   CharacterModel characterState;
 
   goBack(BuildContext context) {
@@ -42,7 +46,6 @@ class _NewCharacterSheetState extends State<NewCharacterSheet> {
       characterState.setRace(
         race: characterRace,
       );
-      // characterState.setRaceAttributes(attributes: characterRace.attributes);
     });
   }
 
@@ -77,6 +80,7 @@ class _NewCharacterSheetState extends State<NewCharacterSheet> {
 
   @override
   Widget build(BuildContext context) {
+    print(classesOfTormenta[0].name);
     return Scaffold(
       backgroundColor: Color.fromRGBO(252, 252, 252, 1),
       body: SafeArea(
@@ -247,7 +251,114 @@ class _NewCharacterSheetState extends State<NewCharacterSheet> {
                 ),
                 Flexible(
                   flex: 1,
-                  child: Container(),
+                  child: Container(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: <Widget>[
+                        Container(
+                          width: double.infinity,
+                          decoration: BoxDecoration(
+                            color: Colors.grey[200],
+                          ),
+                          padding: EdgeInsets.symmetric(
+                            vertical: 16,
+                          ),
+                          child: Center(
+                            child: FlatButton(
+                              child: Text(
+                                'Selecione sua classe.',
+                                style: TextStyle(
+                                  fontSize: 20,
+                                ),
+                              ),
+                              onPressed: () {
+                                showModalBottomSheet(
+                                  context: context,
+                                  builder: (context) => Container(
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.only(
+                                        topLeft: Radius.circular(20),
+                                        topRight: Radius.circular(20),
+                                      ),
+                                    ),
+                                    padding: EdgeInsets.only(
+                                      left: 32,
+                                      right: 32,
+                                      top: 16,
+                                    ),
+                                    child: Column(
+                                      children: <Widget>[
+                                        Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: Text(
+                                            'Escolha uma classe',
+                                            style: TextStyle(
+                                              fontSize: 24,
+                                              color: Colors.blueGrey,
+                                            ),
+                                          ),
+                                        ),
+                                        Flexible(
+                                          flex: 1,
+                                          child: ListView.builder(
+                                            itemCount: classesOfTormenta.length,
+                                            itemBuilder: (context, index) =>
+                                                FlatButton(
+                                              onPressed: () {
+                                                Navigator.pop(context);
+                                                Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        ClassProfile(
+                                                      job: classesOfTormenta[
+                                                          index],
+                                                    ),
+                                                  ),
+                                                );
+                                              },
+                                              child: Row(
+                                                children: <Widget>[
+                                                  // Container(
+                                                  //   padding: EdgeInsets.all(16),
+                                                  //   width: 50,
+                                                  //   height: 50,
+                                                  //   child: CircleAvatar(
+                                                  //     radius: 50,
+                                                  //     backgroundColor:
+                                                  //         Colors.blueGrey,
+                                                  //     backgroundImage:
+                                                  //         classesOfTormenta[index]
+                                                  //             .picture,
+                                                  //   ),
+                                                  // ),
+                                                  Text(
+                                                    classesOfTormenta[index]
+                                                        .name,
+                                                    style: TextStyle(
+                                                      fontSize: 22,
+                                                      fontWeight:
+                                                          FontWeight.w400,
+                                                      color: Colors.blueGrey,
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                );
+                              },
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
                 ),
               ],
             ),

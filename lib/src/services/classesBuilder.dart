@@ -162,3 +162,7 @@ ClassModel cacador = new ClassModel(
     }
   },
 );
+
+List<ClassModel> classesOfTormenta = <ClassModel>[
+  cacador,
+];

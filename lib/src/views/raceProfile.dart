@@ -352,6 +352,23 @@ class _RaceProfileState extends State<RaceProfile> {
                   ),
                 ],
               ),
+              Container(
+                decoration: BoxDecoration(
+                  color: Colors.white70,
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(15),
+                  ),
+                ),
+                margin: EdgeInsets.all(16),
+                padding: EdgeInsets.all(16),
+                child: Text(
+                  _race.motto,
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontStyle: FontStyle.italic,
+                  ),
+                ),
+              ),
               RichText(
                 text: TextSpan(
                   children: <TextSpan>[

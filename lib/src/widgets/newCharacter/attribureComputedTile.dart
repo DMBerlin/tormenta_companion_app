@@ -31,7 +31,7 @@ class AttributeComputedTile extends StatelessWidget {
     return bonus.floor().toString();
   }
 
-  Widget addController(value) {
+  Widget addController(context, value) {
     return GestureDetector(
       onTap: () {
         bool pass =
@@ -45,8 +45,24 @@ class AttributeComputedTile extends StatelessWidget {
               place: (value + 1).toString(),
             ),
           );
+
           Map<String, int> update = {attribute: value + 1};
           callback(addAttribute: update);
+
+          int curBallance = character.getAttributePoints();
+
+          Scaffold.of(context).showSnackBar(SnackBar(
+            content: Text('$curBallance pontos restantes!'),
+            action: SnackBarAction(
+              label: 'Ok',
+              onPressed: () {
+                // Some code to undo the change.
+              },
+            ),
+            duration: Duration(
+              milliseconds: 300,
+            ),
+          ));
         } else {}
       },
       child: Container(
@@ -63,13 +79,29 @@ class AttributeComputedTile extends StatelessWidget {
     );
   }
 
-  Widget subController(value) {
+  Widget subController(context, value) {
     return GestureDetector(
       onTap: () {
         int sold = abilityTable.sell(current: value);
         character.sellItem(value: sold);
+
         Map<String, int> update = {attribute: value - 1};
         callback(subAttribute: update);
+
+        int curBallance = character.getAttributePoints();
+
+        Scaffold.of(context).showSnackBar(SnackBar(
+          content: Text('$curBallance pontos restantes!'),
+          action: SnackBarAction(
+            label: 'Ok',
+            onPressed: () {
+              // Some code to undo the change.
+            },
+          ),
+          duration: Duration(
+            milliseconds: 500,
+          ),
+        ));
       },
       child: Container(
         width: 30,
@@ -152,7 +184,7 @@ class AttributeComputedTile extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
-                subController(value),
+                subController(context, value),
                 Container(
                   padding: EdgeInsets.symmetric(horizontal: 10, vertical: 3),
                   decoration: BoxDecoration(
@@ -165,7 +197,7 @@ class AttributeComputedTile extends StatelessWidget {
                     ),
                   ),
                 ),
-                addController(value),
+                addController(context, value),
               ],
             ),
           ),

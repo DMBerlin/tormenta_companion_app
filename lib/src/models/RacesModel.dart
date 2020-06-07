@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 class RacesModel {
   String name;
+  String motto;
   List<Map<String, int>> attributes;
   Map powers;
   AssetImage picture;
@@ -12,6 +13,7 @@ class RacesModel {
 
   RacesModel({
     String name,
+    String motto,
     List<Map<String, int>> attributes,
     Map powers,
     AssetImage picture,
@@ -21,6 +23,7 @@ class RacesModel {
     List subRaces,
   }) {
     this.name = name;
+    this.motto = motto;
     this.attributes = attributes;
     this.powers = powers;
     this.picture = picture;

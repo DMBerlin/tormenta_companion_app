@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:tormenta_companion_app/src/views/newCharacter.dart';
+import 'package:tormenta_companion_app/src/views/newCharacterBuilder.dart';
 
 class Main extends StatefulWidget {
   @override
@@ -30,7 +30,7 @@ class _MainState extends State<Main> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => NewCharacterSheet(),
+                      builder: (context) => NewCharacterBuilder(),
                     ),
                   );
                 },

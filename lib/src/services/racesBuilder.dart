@@ -3,6 +3,8 @@ import 'package:tormenta_companion_app/src/models/RacesModel.dart';
 
 RacesModel hynne = new RacesModel(
   name: 'Hynne',
+  motto:
+      'Também conhecidos como halflings ou “pequeninos”, os hynne são apreciadores de boa comida e casas aconchegantes.',
   subRaces: null,
   unlockableAttributes: false,
   attributePenality: [
@@ -27,6 +29,8 @@ RacesModel hynne = new RacesModel(
 
 RacesModel anao = new RacesModel(
   name: 'Anão',
+  motto:
+      'Não existe nada mais confiável em Arton que um anão. Cachorros também são confiáveis, mas eu não compararia os dois em frente a um anão se fosse você.',
   subRaces: null,
   unlockableAttributes: false,
   attributePenality: [
@@ -53,6 +57,8 @@ RacesModel anao = new RacesModel(
 
 RacesModel humano = new RacesModel(
   name: 'Humano',
+  motto:
+      'O povo mais numeroso em Arton, humanos são considerados os escolhidos dos deuses, aqueles que governam o mundo.',
   subRaces: null,
   unlockableAttributes: true,
   attributePenality: null,
@@ -72,6 +78,8 @@ RacesModel humano = new RacesModel(
 
 RacesModel dahllan = new RacesModel(
   name: 'Dahllan',
+  motto:
+      'Parte humanas, parte fadas, as dahllan são uma raça de mulheres com a seiva de árvores correndo nas veias.',
   subRaces: null,
   unlockableAttributes: false,
   attributePenality: [
@@ -96,6 +104,8 @@ RacesModel dahllan = new RacesModel(
 
 RacesModel goblin = new RacesModel(
   name: 'Goblin',
+  motto:
+      'Onde o anão teimoso e o elfo empolado falham, o goblin pode dar um jeito. Porque ele não tem vergonha. Nem orgulho. Nem bom senso.',
   subRaces: null,
   unlockableAttributes: false,
   attributePenality: [
@@ -122,6 +132,8 @@ RacesModel goblin = new RacesModel(
 
 RacesModel elf = new RacesModel(
   name: 'Elfo',
+  motto:
+      'Elfos são seres feitos para a beleza e para a guerra, tão habilidosos com magia quanto com espadas e arcos.',
   subRaces: null,
   unlockableAttributes: false,
   attributePenality: [
@@ -144,6 +156,8 @@ RacesModel elf = new RacesModel(
 
 RacesModel lefou = new RacesModel(
   name: 'Lefou',
+  motto:
+      'Com a influência macabra da Tormenta permeando cada vez mais o mundo, surgiram os lefou. Estes meio-demônios de aparência grotesca passaram a nascer em famílias de outras raças, sendo logo sacrificados ou expulsos.',
   subRaces: null,
   unlockableAttributes: true,
   attributePenality: [
@@ -167,6 +181,8 @@ RacesModel lefou = new RacesModel(
 
 RacesModel minotauro = new RacesModel(
   name: 'Minotauro',
+  motto:
+      'Povo guerreiro, orgulhoso e poderoso, criadores de uma civilização avançada, com a missão sagrada de proteger e governar os fracos.',
   subRaces: null,
   unlockableAttributes: false,
   attributePenality: [
@@ -193,6 +209,8 @@ RacesModel minotauro = new RacesModel(
 
 RacesModel quareen = new RacesModel(
   name: 'Quareen',
+  motto:
+      'Descendentes de poderosos gênios, os qareen são otimistas, generosos e prestativos, sempre ansiosos por ajudar.',
   subRaces: null,
   unlockableAttributes: false,
   attributePenality: [
@@ -217,6 +235,8 @@ RacesModel quareen = new RacesModel(
 
 RacesModel golem = new RacesModel(
   name: 'Golem',
+  motto:
+      'Diz-se que estes seres são apenas construtos sem vida, criados não pelos deuses, mas por mortais. No entanto, são movidos por forças vivas — espíritos elementais selvagens, capturados e lacrados por meios mágicos em corpos de pedra e metal.',
   subRaces: null,
   unlockableAttributes: false,
   attributePenality: [
@@ -245,6 +265,8 @@ RacesModel golem = new RacesModel(
 
 RacesModel kliren = new RacesModel(
   name: 'Kliren',
+  motto:
+      'Estes visitantes de outro mundo seriam uma combinação entre humanos e gnomos — mas, afinal, o que é um gnomo? São uma raça que talvez existisse em Arton, não fosse o envolvimento criminoso de seu deus Tilliann na criação da própria Tormenta.',
   subRaces: null,
   unlockableAttributes: false,
   attributePenality: [
@@ -271,6 +293,8 @@ RacesModel kliren = new RacesModel(
 
 RacesModel medusa = new RacesModel(
   name: 'Medusa',
+  motto:
+      'Ainda que estas criaturas reclusas sejam famosas por transformar suas vítimas em pedra com um simples olhar, apenas as mais antigas e poderosas o fazem',
   subRaces: null,
   unlockableAttributes: false,
   attributePenality: null,
@@ -292,6 +316,8 @@ RacesModel medusa = new RacesModel(
 
 RacesModel osteon = new RacesModel(
   name: 'Osteon',
+  motto:
+      'Conhecidos coletivamente como osteon, estes esqueletos demonstram a mesma inteligência e consciência das raças vivas, sendo capazes de adotar quaisquer de suas profissões e devoções.',
   subRaces: null,
   unlockableAttributes: true,
   attributePenality: [
@@ -317,6 +343,8 @@ RacesModel osteon = new RacesModel(
 
 RacesModel sereia = new RacesModel(
   name: 'Sereia',
+  motto:
+      'Sendo chamadas sereias quando femininas e tritões quando masculinos, os membros desta raça de torso humanoide e corpo de peixe têm a habilidade de adotar uma forma bípede para caminhar em terras emersas.',
   subRaces: null,
   unlockableAttributes: true,
   attributePenality: null,
@@ -340,6 +368,8 @@ RacesModel sereia = new RacesModel(
 
 RacesModel silfide = new RacesModel(
   name: 'Sílfide',
+  motto:
+      'As mais numerosas fadas em Arton são estas criaturinhas (alguns diriam “pestes”) esvoaçantes, com suas delicadas asas de inseto e grandes olhos escuros.',
   subRaces: null,
   unlockableAttributes: false,
   attributePenality: [
@@ -364,6 +394,8 @@ RacesModel silfide = new RacesModel(
 
 RacesModel suragel = new RacesModel(
   name: 'Suragel',
+  motto:
+      'Por serem ligados às forças opostas da luz e trevas, suraggel têm traços diferentes quando orientados para seu lado celestial, sendo então conhecidos como aggelus; ou para o lado abissal, assim sendo chamados sulfure.',
   subRaces: [
     {
       'name': 'Anggelus',
@@ -403,6 +435,8 @@ RacesModel suragel = new RacesModel(
 
 RacesModel trog = new RacesModel(
   name: 'Trog',
+  motto:
+      'Trogloditas (ou “trogs”) são homens-lagarto primitivos e subterrâneos que odeiam todos os outros seres — especialmente os que sabem forjar aço, aquilo que mais cobiçam.',
   subRaces: null,
   unlockableAttributes: false,
   attributePenality: [
@@ -427,7 +461,7 @@ RacesModel trog = new RacesModel(
       'Trogloditas (ou “trogs”) são homens-lagarto primitivos e subterrâneos que odeiam todos os outros seres — especialmente os que sabem forjar aço, aquilo que mais cobiçam. Suas tribos tramam incursões contra povoados humanos, fazem emboscadas em estradas, atacam exploradores em masmorras. Uns poucos, no entanto, divergem da crueldade e selvageria inerentes à raça. Abandonam a tribo ou são expulsos. Escolhem caminhos surpreendentes, inesperados; tornam-se druidas, ou clérigos, ou bucaneiros, ou sabe-se lá o que mais. Enfim, acabam aceitos como colegas por aventureiros tão estranhos e deslocados quanto eles próprios.',
 );
 
-List<RacesModel> racesOfTormenta = [
+List<RacesModel> racesOfTormenta = <RacesModel>[
   anao,
   dahllan,
   elf,
