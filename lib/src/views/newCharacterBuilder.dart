@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:tormenta_companion_app/src/models/ClassesModel.dart';
 import 'package:tormenta_companion_app/src/views/classProfile.dart';
 
 import 'package:tormenta_companion_app/src/widgets/newCharacter/attribureComputedTile.dart';
@@ -41,10 +42,18 @@ class _NewCharacterBuilderState extends State<NewCharacterBuilder> {
     super.initState();
   }
 
-  void newCharacterCallback(RacesModel characterRace) {
+  void setRaceCallback(RacesModel characterRace) {
     setState(() {
       characterState.setRace(
         race: characterRace,
+      );
+    });
+  }
+
+  void setClassCallback(ClassModel job) {
+    setState(() {
+      characterState.setJob(
+        job: job,
       );
     });
   }
@@ -80,7 +89,6 @@ class _NewCharacterBuilderState extends State<NewCharacterBuilder> {
 
   @override
   Widget build(BuildContext context) {
-    print(classesOfTormenta[0].name);
     return Scaffold(
       backgroundColor: Color.fromRGBO(252, 252, 252, 1),
       body: SafeArea(
@@ -138,35 +146,43 @@ class _NewCharacterBuilderState extends State<NewCharacterBuilder> {
                                           MaterialPageRoute(
                                             builder: (context) => RaceProfile(
                                               race: racesOfTormenta[index],
-                                              callback: newCharacterCallback,
+                                              callback: setRaceCallback,
                                             ),
                                           ),
                                         );
                                       },
-                                      child: Row(
-                                        children: <Widget>[
-                                          Container(
-                                            padding: EdgeInsets.all(16),
-                                            width: 50,
-                                            height: 50,
-                                            child: CircleAvatar(
-                                              radius: 50,
-                                              backgroundColor: Colors.blueGrey,
-                                              backgroundImage:
-                                                  racesOfTormenta[index]
-                                                      .picture,
-                                            ),
-                                          ),
-                                          Text(
-                                            racesOfTormenta[index].name,
-                                            style: TextStyle(
-                                              fontSize: 22,
-                                              fontWeight: FontWeight.w400,
-                                              color: Colors.blueGrey,
-                                            ),
-                                          ),
-                                        ],
+                                      child: Text(
+                                        racesOfTormenta[index].name,
+                                        style: TextStyle(
+                                          fontSize: 22,
+                                          fontWeight: FontWeight.w400,
+                                          color: Colors.blueGrey,
+                                        ),
                                       ),
+                                      // Row(
+                                      //   children: <Widget>[
+                                      //     Container(
+                                      //       padding: EdgeInsets.all(16),
+                                      //       width: 50,
+                                      //       height: 50,
+                                      //       child: CircleAvatar(
+                                      //         radius: 50,
+                                      //         backgroundColor: Colors.blueGrey,
+                                      //         backgroundImage:
+                                      //             racesOfTormenta[index]
+                                      //                 .picture,
+                                      //       ),
+                                      //     ),
+                                      //     Text(
+                                      //       racesOfTormenta[index].name,
+                                      //       style: TextStyle(
+                                      //         fontSize: 22,
+                                      //         fontWeight: FontWeight.w400,
+                                      //         color: Colors.blueGrey,
+                                      //       ),
+                                      //     ),
+                                      //   ],
+                                      // ),
                                     ),
                                   ),
                                 ),
@@ -256,106 +272,173 @@ class _NewCharacterBuilderState extends State<NewCharacterBuilder> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: <Widget>[
-                        Container(
-                          width: double.infinity,
-                          decoration: BoxDecoration(
-                            color: Colors.grey[200],
-                          ),
-                          padding: EdgeInsets.symmetric(
-                            vertical: 16,
-                          ),
-                          child: Center(
-                            child: FlatButton(
-                              child: Text(
-                                'Selecione sua classe.',
-                                style: TextStyle(
-                                  fontSize: 20,
-                                ),
-                              ),
-                              onPressed: () {
-                                showModalBottomSheet(
-                                  context: context,
-                                  builder: (context) => Container(
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.only(
-                                        topLeft: Radius.circular(20),
-                                        topRight: Radius.circular(20),
+                        characterState?.race == null
+                            ? SizedBox()
+                            : Container(
+                                child: Center(
+                                  child: ListTile(
+                                    title: Text(characterState.race.name),
+                                    subtitle: Text(
+                                      'Raça',
+                                      style: TextStyle(
+                                        fontStyle: FontStyle.italic,
                                       ),
                                     ),
-                                    padding: EdgeInsets.only(
-                                      left: 32,
-                                      right: 32,
-                                      top: 16,
+                                  ),
+                                ),
+                                width: double.infinity,
+                                decoration: BoxDecoration(
+                                  color: Colors.grey[200],
+                                ),
+                                padding: EdgeInsets.symmetric(
+                                  vertical: 16,
+                                ),
+                              ),
+                        characterState?.job == null
+                            ? Container(
+                                width: double.infinity,
+                                decoration: BoxDecoration(
+                                  color: Colors.grey[200],
+                                ),
+                                padding: EdgeInsets.symmetric(
+                                  vertical: 16,
+                                ),
+                                child: Center(
+                                  child: FlatButton(
+                                    child: Text(
+                                      'Selecione sua classe.',
+                                      style: TextStyle(
+                                        fontSize: 20,
+                                      ),
                                     ),
-                                    child: Column(
-                                      children: <Widget>[
-                                        Padding(
-                                          padding: const EdgeInsets.all(8.0),
-                                          child: Text(
-                                            'Escolha uma classe',
-                                            style: TextStyle(
-                                              fontSize: 24,
-                                              color: Colors.blueGrey,
+                                    onPressed: () {
+                                      showModalBottomSheet(
+                                        context: context,
+                                        builder: (context) => Container(
+                                          decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.only(
+                                              topLeft: Radius.circular(20),
+                                              topRight: Radius.circular(20),
                                             ),
                                           ),
-                                        ),
-                                        Flexible(
-                                          flex: 1,
-                                          child: ListView.builder(
-                                            itemCount: classesOfTormenta.length,
-                                            itemBuilder: (context, index) =>
-                                                FlatButton(
-                                              onPressed: () {
-                                                Navigator.pop(context);
-                                                Navigator.push(
-                                                  context,
-                                                  MaterialPageRoute(
-                                                    builder: (context) =>
-                                                        ClassProfile(
-                                                      job: classesOfTormenta[
-                                                          index],
-                                                    ),
+                                          padding: EdgeInsets.only(
+                                            left: 32,
+                                            right: 32,
+                                            top: 16,
+                                          ),
+                                          child: Column(
+                                            children: <Widget>[
+                                              Padding(
+                                                padding:
+                                                    const EdgeInsets.all(8.0),
+                                                child: Text(
+                                                  'Escolha uma classe',
+                                                  style: TextStyle(
+                                                    fontSize: 24,
+                                                    color: Colors.blueGrey,
                                                   ),
-                                                );
-                                              },
-                                              child: Row(
-                                                children: <Widget>[
-                                                  // Container(
-                                                  //   padding: EdgeInsets.all(16),
-                                                  //   width: 50,
-                                                  //   height: 50,
-                                                  //   child: CircleAvatar(
-                                                  //     radius: 50,
-                                                  //     backgroundColor:
-                                                  //         Colors.blueGrey,
-                                                  //     backgroundImage:
-                                                  //         classesOfTormenta[index]
-                                                  //             .picture,
-                                                  //   ),
-                                                  // ),
-                                                  Text(
-                                                    classesOfTormenta[index]
-                                                        .name,
-                                                    style: TextStyle(
-                                                      fontSize: 22,
-                                                      fontWeight:
-                                                          FontWeight.w400,
-                                                      color: Colors.blueGrey,
-                                                    ),
-                                                  ),
-                                                ],
+                                                ),
                                               ),
-                                            ),
+                                              Flexible(
+                                                flex: 1,
+                                                child: ListView.builder(
+                                                  itemCount:
+                                                      classesOfTormenta.length,
+                                                  itemBuilder:
+                                                      (context, index) =>
+                                                          FlatButton(
+                                                    onPressed: () {
+                                                      Navigator.pop(context);
+                                                      Navigator.push(
+                                                        context,
+                                                        MaterialPageRoute(
+                                                          builder: (context) =>
+                                                              ClassProfile(
+                                                            job:
+                                                                classesOfTormenta[
+                                                                    index],
+                                                            callback:
+                                                                setClassCallback,
+                                                          ),
+                                                        ),
+                                                      );
+                                                    },
+                                                    child: Row(
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .center,
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .center,
+                                                      children: <Widget>[
+                                                        Text(
+                                                          classesOfTormenta[
+                                                                  index]
+                                                              .name,
+                                                          style: TextStyle(
+                                                            fontSize: 22,
+                                                            fontWeight:
+                                                                FontWeight.w400,
+                                                            color:
+                                                                Colors.blueGrey,
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
                                           ),
                                         ),
-                                      ],
+                                      );
+                                    },
+                                  ),
+                                ),
+                              )
+                            : Container(
+                                child: Center(
+                                  child: ListTile(
+                                    title: Text(characterState.job.name),
+                                    subtitle: Text(
+                                      'Classe',
+                                      style: TextStyle(
+                                        fontStyle: FontStyle.italic,
+                                      ),
                                     ),
                                   ),
-                                );
-                              },
-                            ),
-                          ),
-                        ),
+                                ),
+                                width: double.infinity,
+                                decoration: BoxDecoration(
+                                  color: Colors.grey[200],
+                                ),
+                                padding: EdgeInsets.symmetric(
+                                  vertical: 16,
+                                ),
+                              ),
+                        characterState.job != null &&
+                                characterState?.job?.perks['Perícia'] == null
+                            ? Container(
+                                width: double.infinity,
+                                decoration: BoxDecoration(
+                                  color: Colors.grey[200],
+                                ),
+                                padding: EdgeInsets.symmetric(
+                                  vertical: 16,
+                                ),
+                                child: Center(
+                                  child: FlatButton(
+                                    child: Text(
+                                      'Defina suas perícias.',
+                                      style: TextStyle(
+                                        fontSize: 20,
+                                      ),
+                                    ),
+                                    onPressed: () {},
+                                  ),
+                                ),
+                              )
+                            : SizedBox()
                       ],
                     ),
                   ),

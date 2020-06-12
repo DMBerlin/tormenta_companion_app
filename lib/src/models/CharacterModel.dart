@@ -19,20 +19,21 @@ class CharacterModel {
   Map attributes;
   int attributePoints;
 
-  CharacterModel(
-      {AssetImage picture,
-      String player,
-      String origin,
-      String name,
-      int level,
-      RacesModel race,
-      ClassModel job,
-      Map hitpoints,
-      Map manapoints,
-      Map skills,
-      Map talents,
-      Map attributes,
-      int attributePoints}) {
+  CharacterModel({
+    AssetImage picture,
+    String player,
+    String origin,
+    String name,
+    int level,
+    RacesModel race,
+    ClassModel job,
+    Map hitpoints,
+    Map manapoints,
+    Map skills,
+    Map talents,
+    Map attributes,
+    int attributePoints,
+  }) {
     this.picture = picture;
     this.player = player;
     this.origin = origin;

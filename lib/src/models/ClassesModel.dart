@@ -2,15 +2,15 @@ class ClassModel {
   String name;
   String description;
   Map perks;
-  Map abilities;
-  Map trail;
+  List trail;
+  List abilities;
 
   ClassModel({
     String name,
     String description,
     Map perks,
-    Map abilities,
-    Map trail,
+    List trail,
+    List abilities,
   }) {
     this.name = name;
     this.description = description;

@@ -10,59 +10,62 @@ ClassModel cacador = new ClassModel(
     'Pontos de Mana': '4 PM por Nível.',
     'Proficiências': 'Armas marciais e escudo.',
     'Perícias': [
-      'Sobrevivência',
-      {
-        'Ou': ['Luta', 'Pontaria'],
-      },
-      {
+      ['Sobrevivência (Sab)'],
+      [
+        'Ou',
+        ['Luta (For)', 'Pontaria (Des)'],
+      ],
+      [
         6,
         [
-          'Adestramento',
-          'Atletismo',
-          'Cavalgar',
-          'Cura',
-          'Fortitude',
-          'Furtividade',
-          'Iniciativa',
-          'Luta',
-          'Ofício',
-          'Percepção',
-          'Pontaria',
-          'Reflexos',
+          'Adestramento (Car)',
+          'Atletismo (For)',
+          'Cavalgar (Des)',
+          'Cura (Sab)',
+          'Fortitude (Con)',
+          'Furtividade (Des)',
+          'Iniciativa (Des)',
+          'Luta (For)',
+          'Ofício (Int)',
+          'Percepção (Sab)',
+          'Pontaria (Des)',
+          'Reflexos (Des)',
         ],
-      },
+      ],
     ],
   },
-  abilities: {
-    'Trilha': [
-      ['Marca da presa +1d4', 'Rastreador'],
-      ['Poder de  Caçador'],
-      ['Exporador', 'Poder de Caçador'],
-      ['Poder de Caçador'],
-      ['Caminho do Explorador', 'Marca da Presa +1d8', 'Poder de Caçador'],
-      ['Poder de Caçador'],
-      ['Explorador', 'Poder de Caçador'],
-      ['Poder de Caçador'],
-      ['Marca da Presa +1d12', 'Poder de Caçador'],
-      ['Poder de Caçador'],
-      ['Explorador', 'Poder de Caçador'],
-      ['Poder de Caçador'],
-      ['Marca da Presa +2d8', 'Poder de Caçador'],
-      ['Poder de Caçador'],
-      ['Explorador', 'Poder de Caçador'],
-      ['Poder de Caçador'],
-      ['Marca da Presa +2d10', 'Poder de Caçador'],
-      ['Poder de Caçador'],
-      ['Explorador', 'Poder de Caçador'],
-      ['Mestre Caçador', 'Poder de Caçador'],
-    ],
-  },
-  trail: {
-    'Habilidades': {
+  trail: [
+    ['Marca da Presa +1d4', 'Rastreador'],
+    ['Poder de  Caçador'],
+    ['Exporador', 'Poder de Caçador'],
+    ['Poder de Caçador'],
+    ['Caminho do Explorador', 'Marca da Presa +1d8', 'Poder de Caçador'],
+    ['Poder de Caçador'],
+    ['Explorador', 'Poder de Caçador'],
+    ['Poder de Caçador'],
+    ['Marca da Presa +1d12', 'Poder de Caçador'],
+    ['Poder de Caçador'],
+    ['Explorador', 'Poder de Caçador'],
+    ['Poder de Caçador'],
+    ['Marca da Presa +2d8', 'Poder de Caçador'],
+    ['Poder de Caçador'],
+    ['Explorador', 'Poder de Caçador'],
+    ['Poder de Caçador'],
+    ['Marca da Presa +2d10', 'Poder de Caçador'],
+    ['Poder de Caçador'],
+    ['Explorador', 'Poder de Caçador'],
+    ['Mestre Caçador', 'Poder de Caçador'],
+  ],
+  abilities: [
+    {
       'Marca da Presa':
           'Você pode gastar uma ação de movimento e 1 PM para analisar uma criatura em alcance curto. Até o fim da cena, você recebe +1d4 nas rolagens de dano contra essa criatura. A cada quatro níveis, você pode gastar +1 PM para aumentar o bônus de dano (veja a tabela da classe).',
+    },
+    {
       'Rastreador':
           'Você recebe +2 em Sobrevivência. Além disso, pode se mover com seu deslocamento normal enquanto rastreia sem sofrer penalidades no teste de Sobrevivência.',
+    },
+    {
       'Poder de Caçador': [
         {
           'Ambidestria':
@@ -153,14 +156,20 @@ ClassModel cacador = new ClassModel(
               'Quando usa a habilidade Marca da Presa, seus ataques contra a criatura marcada recebem +2 na margem de ameaça. Esse bônus dobra com a habilidade Inimigo.',
         },
       ],
+    },
+    {
       'Explorador':
           'No 3º nível, escolha um tipo de terreno entre aquático, ártico, colina, deserto, floresta, montanha, pântano, planície, subterrâneo ou urbano. A partir do 11º nível, você também pode escolher área de Tormenta. Quando estiver no tipo de terreno escolhido, você soma seu bônus de Sabedoria (mínimo +1) na Defesa e nos testes de Acrobacia, Atletismo, Furtividade, Percepção e Sobrevivência. A cada quatro níveis, escolha outro tipo de terreno para receber o bônus ou aumente o bônus em um tipo de terreno já escolhido em +2.',
+    },
+    {
       'Caminho do Explorador':
           'No 5º nível, você pode atravessar terrenos difíceis sem sofrer redução em seu deslocamento e a CD para rastrear você aumenta em +10. Esta habilidade só funciona em terrenos nos quais você tenha a habilidade Explorador.',
+    },
+    {
       'Mestre Caçador':
           'No 20º nível, você pode usar a habilidade Marca da Presa como uma ação livre. Além disso, quando usa a habilidade, pode gastar +5 PM para aumentar sua margem de ameaça contra a criatura em +2. Se você reduz uma criatura contra a qual usou Marca da Presa a 0 pontos de vida, recupera 5 PM.',
-    }
-  },
+    },
+  ],
 );
 
 List<ClassModel> classesOfTormenta = <ClassModel>[

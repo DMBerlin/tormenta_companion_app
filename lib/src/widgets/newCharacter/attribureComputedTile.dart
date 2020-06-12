@@ -49,20 +49,21 @@ class AttributeComputedTile extends StatelessWidget {
           Map<String, int> update = {attribute: value + 1};
           callback(addAttribute: update);
 
-          int curBallance = character.getAttributePoints();
+          // * Mostrar saldo na compra de pontos
+          // int curBallance = character.getAttributePoints();
 
-          Scaffold.of(context).showSnackBar(SnackBar(
-            content: Text('$curBallance pontos restantes!'),
-            action: SnackBarAction(
-              label: 'Ok',
-              onPressed: () {
-                // Some code to undo the change.
-              },
-            ),
-            duration: Duration(
-              milliseconds: 300,
-            ),
-          ));
+          // Scaffold.of(context).showSnackBar(SnackBar(
+          //   content: Text('$curBallance pontos restantes!'),
+          //   action: SnackBarAction(
+          //     label: 'Ok',
+          //     onPressed: () {
+          //       // Some code to undo the change.
+          //     },
+          //   ),
+          //   duration: Duration(
+          //     milliseconds: 300,
+          //   ),
+          // ));
         } else {}
       },
       child: Container(
@@ -88,20 +89,20 @@ class AttributeComputedTile extends StatelessWidget {
         Map<String, int> update = {attribute: value - 1};
         callback(subAttribute: update);
 
-        int curBallance = character.getAttributePoints();
+        // int curBallance = character.getAttributePoints();
 
-        Scaffold.of(context).showSnackBar(SnackBar(
-          content: Text('$curBallance pontos restantes!'),
-          action: SnackBarAction(
-            label: 'Ok',
-            onPressed: () {
-              // Some code to undo the change.
-            },
-          ),
-          duration: Duration(
-            milliseconds: 500,
-          ),
-        ));
+        // Scaffold.of(context).showSnackBar(SnackBar(
+        //   content: Text('$curBallance pontos restantes!'),
+        //   action: SnackBarAction(
+        //     label: 'Ok',
+        //     onPressed: () {
+        //       // Some code to undo the change.
+        //     },
+        //   ),
+        //   duration: Duration(
+        //     milliseconds: 500,
+        //   ),
+        // ));
       },
       child: Container(
         width: 30,

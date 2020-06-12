@@ -39,14 +39,15 @@ class _MainState extends State<Main> {
                   height: 80,
                   decoration: BoxDecoration(
                     color: Colors.grey[200],
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.5),
-                        spreadRadius: 1,
-                        blurRadius: 8,
-                        offset: Offset(0, 5), // changes position of shadow
-                      ),
-                    ],
+                    border: Border.all(width: 0.5, color: Colors.grey),
+                    // boxShadow: [
+                    //   BoxShadow(
+                    //     color: Colors.grey.withOpacity(0.5),
+                    //     spreadRadius: 1,
+                    //     blurRadius: 8,
+                    //     offset: Offset(0, 5), // changes position of shadow
+                    //   ),
+                    // ],
                     borderRadius: BorderRadius.all(
                       Radius.circular(15),
                     ),
