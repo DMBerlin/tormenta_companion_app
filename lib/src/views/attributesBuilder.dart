@@ -6,10 +6,15 @@ import 'package:tormenta_companion_app/src/models/CharacterModel.dart';
 import 'package:tormenta_companion_app/src/widgets/newCharacter/attribureComputedTile.dart';
 
 class AttributesBuilder extends StatefulWidget {
+  final Function callback;
+  AttributesBuilder({
+    this.callback,
+  });
   _AtributesBuilderState createState() => _AtributesBuilderState();
 }
 
 class _AtributesBuilderState extends State<AttributesBuilder> {
+  Function _callback;
   goBack(BuildContext context) {
     Navigator.pop(context);
   }
@@ -21,6 +26,7 @@ class _AtributesBuilderState extends State<AttributesBuilder> {
   @override
   void initState() {
     super.initState();
+    _callback = widget.callback;
   }
 
   @override
@@ -124,6 +130,7 @@ class _AtributesBuilderState extends State<AttributesBuilder> {
                                   context,
                                   listen: false,
                                 ).rebuildAttributePoints();
+                                _callback();
                                 Navigator.pop(context);
                               },
                             ),
@@ -160,7 +167,7 @@ class _AtributesBuilderState extends State<AttributesBuilder> {
                                     gravity: Toast.BOTTOM,
                                   );
                                 } else {
-                                  updateState();
+                                  _callback();
                                   Navigator.pop(context);
                                 }
                               },

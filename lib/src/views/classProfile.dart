@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tormenta_companion_app/src/models/ClassesModel.dart';
 
 class ClassProfile extends StatelessWidget {

@@ -1,24 +1,19 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
+import 'package:provider/provider.dart';
 import 'package:tormenta_companion_app/src/models/CharacterModel.dart';
-import 'package:tormenta_companion_app/src/models/AbilityPointsTable.dart';
 
-AbilityPointsTable abilityTable = new AbilityPointsTable();
+import 'package:tormenta_companion_app/src/models/NewSheetRules.dart';
 
 class AttributeComputedTile extends StatelessWidget {
   final String attribute;
   final int value;
-  final CharacterModel character;
-  final int attributePoints;
   final Function callback;
 
   AttributeComputedTile({
-    this.attribute,
-    this.value,
-    this.character,
-    this.attributePoints,
-    this.callback,
+    @required this.attribute,
+    @required this.value,
+    @required this.callback,
   });
 
   bool isAttributeGreaterThanZero(val) {
@@ -34,20 +29,23 @@ class AttributeComputedTile extends StatelessWidget {
   Widget addController(context, value) {
     return GestureDetector(
       onTap: () {
-        bool pass =
-            abilityTable.canBuy(current: value, bag: character.attributePoints);
+        bool pass = NewSheetRules.canBuyAttribute(
+            current: value,
+            bag: Provider.of<CharacterModel>(context, listen: false)
+                .getAttributePoints());
         if (pass) {
-          character.ballanceWallet(
-            currentPrice: abilityTable.getPrice(
+          Provider.of<CharacterModel>(context, listen: false).ballanceWallet(
+            currentPrice: NewSheetRules.getAttributeCost(
               place: value.toString(),
             ),
-            nextPrice: abilityTable.getPrice(
+            nextPrice: NewSheetRules.getAttributeCost(
               place: (value + 1).toString(),
             ),
           );
-
-          Map<String, int> update = {attribute: value + 1};
-          callback(addAttribute: update);
+          Provider.of<CharacterModel>(context, listen: false).updateAttribute(
+            attribute: attribute,
+            value: value + 1,
+          );
 
           // * Mostrar saldo na compra de pontos
           // int curBallance = character.getAttributePoints();
@@ -65,6 +63,7 @@ class AttributeComputedTile extends StatelessWidget {
           //   ),
           // ));
         } else {}
+        callback();
       },
       child: Container(
         width: 30,
@@ -83,11 +82,14 @@ class AttributeComputedTile extends StatelessWidget {
   Widget subController(context, value) {
     return GestureDetector(
       onTap: () {
-        int sold = abilityTable.sell(current: value);
-        character.sellItem(value: sold);
+        int sold = NewSheetRules.sell(current: value);
+        Provider.of<CharacterModel>(context, listen: false)
+            .sellItem(value: sold);
 
-        Map<String, int> update = {attribute: value - 1};
-        callback(subAttribute: update);
+        Provider.of<CharacterModel>(context, listen: false).updateAttribute(
+          attribute: attribute,
+          value: value - 1,
+        );
 
         // int curBallance = character.getAttributePoints();
 
@@ -103,6 +105,8 @@ class AttributeComputedTile extends StatelessWidget {
         //     milliseconds: 500,
         //   ),
         // ));
+
+        callback();
       },
       child: Container(
         width: 30,
@@ -122,10 +126,13 @@ class AttributeComputedTile extends StatelessWidget {
   Widget build(BuildContext context) {
     int virtualValue = value;
 
-    if (character.race != null) {
-      character.race.attributes.forEach((att) {
-        if (att[this.attribute] != null) {
-          virtualValue = value + att[this.attribute];
+    if (Provider.of<CharacterModel>(context, listen: false).race != null) {
+      Provider.of<CharacterModel>(context, listen: false)
+          .race
+          .attributes
+          .forEach((att) {
+        if (att[attribute] != null) {
+          virtualValue = value + att[attribute];
         }
       });
     }
